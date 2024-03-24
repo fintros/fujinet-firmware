@@ -9,6 +9,8 @@
 #include <driver/gpio.h>
 #if CONFIG_IDF_TARGET_ESP32S3
 # include <hal/gpio_ll.h>
+#elif CONFIG_IDF_TARGET_ESP32C3
+# include <hal/gpio_ll.h>
 #else
 # include <driver/dac.h>
 #endif
@@ -570,7 +572,7 @@ int SystemManager::get_sio_voltage()
 {
 #ifdef ESP_PLATFORM
 
-#if !defined(CONFIG_IDF_TARGET_ESP32S3) && !defined(PINMAP_A2_REV0)
+#if !defined(CONFIG_IDF_TARGET_ESP32S3) && !defined(PINMAP_A2_REV0) && !defined(CONFIG_IDF_TARGET_ESP32C3)
     // Configure ADC1_CH7
     adc1_config_width(ADC_WIDTH_12Bit);
     adc1_config_channel_atten(ADC1_CHANNEL_7, ADC_ATTEN_11db);
@@ -839,6 +841,9 @@ const char *SystemManager::get_hardware_ver_str()
     case 4:
         return "1.6.1 and up";
         break;
+    case 5:
+        return "XDrive";
+        break;
     case -1:
         return "fujinet-pc";
         break;
@@ -863,6 +868,12 @@ void SystemManager::check_hardware_ver()
     if (PIN_CARD_DETECT != GPIO_NUM_NC)
         setup_card_detect(PIN_CARD_DETECT);
     _hardware_version = 4;
+
+#elif PINMAP_ATARI_XDRIVE
+
+    if (PIN_CARD_DETECT != GPIO_NUM_NC)
+        setup_card_detect(PIN_CARD_DETECT);
+    _hardware_version = 5;
 
 #else /* PINMAP_ESP32S3 */
 

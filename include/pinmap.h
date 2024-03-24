@@ -6,6 +6,7 @@
 #include "pinmap/a2_fn10.h"
 #include "pinmap/a2_rev0.h"
 #include "pinmap/mac_rev0.h"
+#include "pinmap/atari_xdrive.h"
 #include "pinmap/atariv1.h"
 #include "pinmap/adamv1.h"
 #include "pinmap/iec.h"

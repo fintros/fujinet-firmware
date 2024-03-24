@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
-#include "freertos/xtensa_api.h"
+// #include "freertos/xtensa_api.h"
 #include "freertos/ringbuf.h"
 #include "esp_log.h"
 #include "esp_err.h"

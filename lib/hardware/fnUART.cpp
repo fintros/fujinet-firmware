@@ -18,7 +18,7 @@
 #ifdef BUILD_RS232
 #define UART_SIO UART_NUM_1
 #else
-#define UART_SIO UART_NUM_2
+#define UART_SIO UART_NUM_1
 #endif
 
 // Number of RTOS ticks to wait for data in TX buffer to complete sending

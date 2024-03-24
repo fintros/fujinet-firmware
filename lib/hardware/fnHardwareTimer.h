@@ -30,9 +30,9 @@ timer_config_t fn_config;
 public:
   void config();
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
-  void reset() { TIMERG1.hw_timer[TIMER_1].loadlo.val = 0; TIMERG1.hw_timer[TIMER_1].load.val = 0; };
-  void latch() { TIMERG1.hw_timer[TIMER_1].update.val = 0; };
-  void read() { fn_timer.t0 = TIMERG1.hw_timer[TIMER_1].lo.val; };
+  void reset() { TIMERG1.hw_timer[TIMER_0].loadlo.val = 0; TIMERG1.hw_timer[TIMER_0].load.val = 0; };
+  void latch() { TIMERG1.hw_timer[TIMER_0].update.val = 0; };
+  void read() { fn_timer.t0 = TIMERG1.hw_timer[TIMER_0].lo.val; };
 #else
   void reset() { TIMERG1.hw_timer[TIMER_1].load_low = 0; TIMERG1.hw_timer[TIMER_1].reload = 0; };
   void latch() { TIMERG1.hw_timer[TIMER_1].update = 0; };

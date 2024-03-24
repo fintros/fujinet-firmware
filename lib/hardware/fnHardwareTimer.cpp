@@ -87,9 +87,9 @@ void HardwareTimer::config()
 #endif
   fn_config.divider = TIMER_DIVIDER; // default clock source is APB
   
-  timer_init(TIMER_GROUP_1, TIMER_1, &fn_config);
-  timer_set_counter_value(TIMER_GROUP_1, TIMER_1, 0);
-  timer_start(TIMER_GROUP_1, TIMER_1);
+  timer_init(TIMER_GROUP_0, TIMER_0, &fn_config);
+  timer_set_counter_value(TIMER_GROUP_0, TIMER_0, 0);
+  timer_start(TIMER_GROUP_0, TIMER_0);
 }
 
 HardwareTimer fnTimer; // global object for the hardware timer

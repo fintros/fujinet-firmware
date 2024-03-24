@@ -164,6 +164,26 @@ def makezip(source, target, env):
     ]
 }
 """
+        elif config[environment]['board'] == "fujinet-xdrive":
+            json_contents += """        {
+            "filename": "bootloader.bin",
+            "offset": "0x1000"
+        },
+        {
+            "filename": "partitions.bin",
+            "offset": "0x8000"
+        },
+        {
+            "filename": "firmware.bin",
+            "offset": "0x10000"
+        },
+        {
+            "filename": "spiffs.bin",
+            "offset": "0x250000"
+        }
+    ]
+}
+"""
 
         # Save Release JSON
         with open('firmware/release.json', 'w') as f:

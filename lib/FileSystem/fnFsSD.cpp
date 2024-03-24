@@ -9,7 +9,7 @@
 #include <esp_vfs_fat.h>
 #include <driver/sdmmc_host.h>
 #include <esp_rom_gpio.h>
-#include <soc/sdmmc_periph.h>
+//#include <soc/sdmmc_periph.h>
 #endif
 
 #include <sys/stat.h>
