@@ -30,8 +30,7 @@
     "maximum_size": 4194304,
     "protocols": [
       "esptool",
-      "espota",
-      "ftdi"
+      "espota"
     ],
     "require_upload_port": true,
     "speed": 460800

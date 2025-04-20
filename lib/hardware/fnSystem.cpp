@@ -182,7 +182,10 @@ void SystemManager::set_pin_mode(uint8_t pin, gpio_mode_t mode, pull_updown_t pu
 // Set DIGI_LOW or DIGI_HIGH
 void IRAM_ATTR SystemManager::digital_write(uint8_t pin, uint8_t val)
 {
-#ifdef ESP_PLATFORM
+#ifdef CONFIG_IDF_TARGET_ESP32C3
+    gpio_set_level((gpio_num_t) pin, val);
+
+#elif ESP_PLATFORM
     if (val)
     {
         if (pin < 32)
@@ -214,7 +217,10 @@ void IRAM_ATTR SystemManager::digital_write(uint8_t pin, uint8_t val)
 // Returns DIGI_LOW or DIGI_HIGH
 int IRAM_ATTR SystemManager::digital_read(uint8_t pin)
 {
-#ifdef ESP_PLATFORM
+#ifdef CONFIG_IDF_TARGET_ESP32C3
+    return gpio_get_level((gpio_num_t) pin);
+
+#elif ESP_PLATFORM
     if (pin < 32)
     {
         return (GPIO.in >> pin) & 0x1;

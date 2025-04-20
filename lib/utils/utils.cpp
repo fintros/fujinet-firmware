@@ -6,6 +6,7 @@
 #include <sstream>
 #include <stack>
 #include <cmath>
+#include <stdarg.h>
 #include "compat_string.h"
 
 #ifndef ESP_PLATFORM
@@ -923,7 +924,7 @@ std::string prependSlash(const std::string& str) {
     return str;
 }
 
-#ifndef ESP_PLATFORM
+#if !defined(ESP_PLATFORM) || defined(CONFIG_IDF_TARGET_ESP32C3)
 // helper function for Debug_print* macros on fujinet-pc
 void util_debug_printf(const char *fmt, ...)
 {
@@ -954,7 +955,7 @@ void util_debug_printf(const char *fmt, ...)
         tm tm;
         char buffer[32];
 
-        compat_gettimeofday(&tv, NULL);
+        gettimeofday(&tv, NULL);
 #if defined(_WIN32)
         time_t t = (time_t)tv.tv_sec;
         localtime_s(&tm, &t);

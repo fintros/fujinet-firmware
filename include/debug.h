@@ -21,7 +21,7 @@
   Debugging Macros
 */
 #ifdef DEBUG
-#ifdef ESP_PLATFORM
+#if defined(ESP_PLATFORM) && !defined(CONFIG_IDF_TARGET_ESP32C3)
     // Use FujiNet debug serial output
     #include "../lib/hardware/fnUART.h"
     #define Serial fnUartDebug
@@ -34,7 +34,7 @@
     #define HEAP_CHECK(x) Debug_printf("HEAP CHECK %s " x "\r\n", heap_caps_check_integrity_all(true) ? "PASSED":"FAILED")
 #else
     // Use util_debug_printf() helper function
-    #include <utils.h>
+    void util_debug_printf(const char *fmt, ...);
 
     #define Debug_print(...) util_debug_printf(nullptr, __VA_ARGS__)
     #define Debug_printf(...) util_debug_printf(__VA_ARGS__)

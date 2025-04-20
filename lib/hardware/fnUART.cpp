@@ -11,6 +11,7 @@
 #include <cstring>
 
 #include "../../include/pinmap.h"
+#include <stdarg.h>
 
 
 #define UART_DEBUG UART_NUM_0

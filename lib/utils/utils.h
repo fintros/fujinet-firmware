@@ -107,7 +107,7 @@ bool isApproximatelyInteger(double value, double tolerance = 1e-6);
 // ensure string starts with a "/"
 std::string prependSlash(const std::string& str);
 
-#ifndef ESP_PLATFORM
+#if !defined(ESP_PLATFORM) || defined(CONFIG_IDF_TARGET_ESP32C3)
 // helper function for Debug_print* macros on fujinet-pc
 void util_debug_printf(const char *fmt, ...);
 #endif // !ESP_PLATFORM

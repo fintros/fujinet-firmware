@@ -1,7 +1,7 @@
 
 #include "keys.h"
 
-#include <esp32/himem.h>
+//#include <esp32/himem.h>
 
 #include "../../include/debug.h"
 #include "../../include/pinmap.h"
@@ -41,15 +41,15 @@ void KeyManager::setup()
 #else /* PINMAP_ESP32S3 */
 
 #ifdef NO_BUTTONS
-    fnSystem.set_pin_mode(PIN_BUTTON_A, gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_UP);
-    fnSystem.set_pin_mode(PIN_BUTTON_B, gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_UP);
+    //fnSystem.set_pin_mode(PIN_BUTTON_A, gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_UP);
+    //fnSystem.set_pin_mode(PIN_BUTTON_B, gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_UP);
 #elif defined(PINMAP_A2_REV0) || defined(PINMAP_FUJIAPPLE_IEC) || defined(PINMAP_MAC_REV0)
     fnSystem.set_pin_mode(PIN_BUTTON_A, gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_UP);
 #else
     fnSystem.set_pin_mode(PIN_BUTTON_A, gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_NONE);
 #endif /* NO_BUTTONS */
 
-#if !defined(BUILD_LYNX) && !defined(BUILD_APPLE) && !defined(BUILD_RS232) && !defined(BUILD_RC2014) && !defined(BUILD_IEC) && !defined(BUILD_MAC)
+#if !defined(BUILD_LYNX) && !defined(BUILD_APPLE) && !defined(BUILD_RS232) && !defined(BUILD_RC2014) && !defined(BUILD_IEC) && !defined(BUILD_MAC) && !defined(NO_BUTTONS)
     fnSystem.set_pin_mode(PIN_BUTTON_B, gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_NONE);
 #endif /* NOT LYNX OR A2 */
 
@@ -68,20 +68,20 @@ void KeyManager::setup()
             fnSystem.set_pin_mode(fnSystem.get_safe_reset_gpio(), gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_UP);
             Debug_printf("Safe Reset button ENABLED on GPIO %d\r\n", fnSystem.get_safe_reset_gpio());
         }
-#else
+#elif !defined(NO_BUTTONS)
         fnSystem.set_pin_mode(fnSystem.get_safe_reset_gpio(), gpio_mode_t::GPIO_MODE_INPUT, SystemManager::pull_updown_t::PULL_NONE);
         Debug_printf("Safe Reset button ENABLED on GPIO %d\r\n", fnSystem.get_safe_reset_gpio());
 #endif
     }
+#endif /* PINMAP_ESP32S3 */
 
 #ifdef NO_BUTTONS
     _keys[eKey::BUTTON_A].disabled = true;
     _keys[eKey::BUTTON_B].disabled = true;
     _keys[eKey::BUTTON_C].disabled = true;
     Debug_println("NO_BUTTONS: disabled all buttons");
+    return;
 #endif /* PINMAP_IEC_NUGGET */
-
-#endif /* PINMAP_ESP32S3 */
 
     // Start a new task to check the status of the buttons
     #define KEYS_STACKSIZE 4096

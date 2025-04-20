@@ -155,7 +155,9 @@ void main_setup(int argc, char *argv[])
     // Startup messages
 #ifdef ESP_PLATFORM
   #ifdef DEBUG
+#ifndef CONFIG_IDF_TARGET_ESP32C3
     fnUartDebug.begin(DEBUG_SPEED);
+#endif    
     unsigned long startms = fnSystem.millis();
     Debug_printf("\r\n\r\n--~--~--~--\nFujiNet %s Started @ %lu\r\n", fnSystem.get_fujinet_version(), startms);
     Debug_printf("Starting heap: %u\r\n", fnSystem.get_free_heap_size());
