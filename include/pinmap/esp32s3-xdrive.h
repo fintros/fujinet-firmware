@@ -20,8 +20,8 @@
 #define PIN_UART2_TX            GPIO_NUM_8
 
 /* Buttons */
-#define PIN_BUTTON_A            GPIO_NUM_NC
-#define PIN_BUTTON_B            GPIO_NUM_NC
+#define PIN_BUTTON_A            GPIO_NUM_34
+#define PIN_BUTTON_B            GPIO_NUM_35
 #define PIN_BUTTON_C            GPIO_NUM_NC
 
 /* LEDs */
@@ -31,11 +31,11 @@
 #define PIN_LED_BT              GPIO_NUM_NC
 
 /* Atari SIO Pins */
-#define PIN_INT                 GPIO_NUM_NC //GPIO_NUM_13 // sio.h
-#define PIN_PROC                GPIO_NUM_NC //GPIO_NUM_12
-#define PIN_CKO                 GPIO_NUM_NC //GPIO_NUM_6
-#define PIN_CKI                 GPIO_NUM_NC //GPIO_NUM_7
-#define PIN_MTR                 GPIO_NUM_NC //GPIO_NUM_11
+#define PIN_INT                 GPIO_NUM_13 // sio.h
+#define PIN_PROC                GPIO_NUM_12
+#define PIN_CKO                 GPIO_NUM_6
+#define PIN_CKI                 GPIO_NUM_7
+#define PIN_MTR                 GPIO_NUM_11
 #define PIN_CMD                 GPIO_NUM_10
 
 
