@@ -538,11 +538,6 @@ void systemBus::setup()
     // Set up UART
     SYSTEM_BUS.uart->begin(_sioBaud);
 
-#ifdef PINMAP_ESP32S3_XDRIVE    
-    // Enable comm
-    fnSystem.set_pin_mode(IF_ENABLE_PIN, gpio_mode_t::GPIO_MODE_OUTPUT, SystemManager::pull_updown_t::PULL_NONE);
-    fnSystem.digital_write(IF_ENABLE_PIN, DIGI_HIGH);
-#endif    
     // INT PIN
     fnSystem.set_pin_mode(PIN_INT, gpio_mode_t::GPIO_MODE_OUTPUT_OD, SystemManager::pull_updown_t::PULL_UP);
     fnSystem.digital_write(PIN_INT, DIGI_HIGH);

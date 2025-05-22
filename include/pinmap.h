@@ -22,7 +22,6 @@
 #include "pinmap/fujiapple-iec.h"
 #include "pinmap/esp32s3.h"
 #include "pinmap/esp32s3-wroom-1.h"
-#include "pinmap/esp32s3-xdrive.h"
 #include "pinmap/lynx.h"
 #include "pinmap/rs232_rev0.h"
 #include "pinmap/rs232_s3.h"
@@ -30,6 +29,7 @@
 #include "pinmap/rc2014spi_rev0.h"
 #include "pinmap/heathkit_h89.h"
 #include "pinmap/atari2600.h"
+#include "pinmap/esp32s3-xdrive.h"
 
 
 #ifndef PIN_DEBUG
