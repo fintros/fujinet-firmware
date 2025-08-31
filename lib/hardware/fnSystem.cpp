@@ -57,6 +57,7 @@
 #include "fsFlash.h"
 #include "fnFsSD.h"
 #include "fnWiFi.h"
+#include "fnLedStrip.h"
 
 #ifdef BUILD_APPLE
 #define BUS_CLASS IWM
@@ -175,6 +176,7 @@ SystemManager::SystemManager()
     memset(_uname_string, 0, sizeof(_uname_string));
 #endif
     _hardware_version=0;
+    ledstrip_found = fnLedStrip.present();
 }
 
 // Returns current CPU frequency in MHz

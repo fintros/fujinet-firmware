@@ -24,10 +24,13 @@
 #define PIN_BUTTON_B            GPIO_NUM_35
 #define PIN_BUTTON_C            GPIO_NUM_NC
 
+/* LEDs strip */
+#define PIN_LED_STRIP           GPIO_NUM_33 // fnLedStrip.cpp
+#define LED_STRIP_COUNT         1
+
 /* LEDs */
 #define PIN_LED_WIFI            GPIO_NUM_NC // led.cpp
 #define PIN_LED_BUS             GPIO_NUM_NC
-
 #define PIN_LED_BT              GPIO_NUM_NC
 
 /* Atari SIO Pins */

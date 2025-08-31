@@ -14,7 +14,7 @@
     "flash_mode": "qio",
     "mcu": "esp32s3",
     "variant": "esp32s3",
-    "partitions": "fujinet_partitions_4MB.csv"
+    "partitions": "fujinet_partitions_4MB_noupdate.csv"
 },
   "connectivity": [
     "wifi"
